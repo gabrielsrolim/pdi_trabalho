@@ -247,17 +247,18 @@ def medianabandaY(rgb,ordem):
         ajuste = 1
     elif(ordem == 5):
         ajuste = 2
+    yuv2 = Image.new('YCbCr',yuv.size)
     print "\n\nAguarde, processando..."
     for row in range(ajuste,yuv.size[1]-ajuste):#percorre as linhas
         for col in range(ajuste,yuv.size[0]-ajuste):#percorre as colunas
-            pixel = yuv.getpixel((row,col))
+            pixel = yuv.getpixel((col,row))
             y = int(round(valueaverage(yuv,row,col,0,ordem)))
             u = pixel[1]
             v = pixel[2]
-            yuv.putpixel((col,row), (r,g,b))
+            yuv2.putpixel((col,row), (y,u,v))
     print "\nProcessamento finalizado.\n\n"
     #rgb2 = yuv2rgb(yuv)
-    rgb2 = yuv.convert('RGB')
+    rgb2 = yuv2.convert('RGB')
     return rgb2
 
 def controlfilter(rgb1,rgb2):
@@ -266,7 +267,7 @@ def controlfilter(rgb1,rgb2):
         for col in range(0,rgb1.size[1]):
             pixel1 = rgb1.getpixel((row,col))
             pixel2 = rgb2.getpixel((row,col))
-            pixel = [pixel1[0]+pixel2[0],pixel1[1]+pixel2[1],pixel1[2]+pixel2[2]]
+            pixel = [int((pixel1[0]+pixel2[0])/2),int((pixel1[1]+pixel2[1])/2),int((pixel1[2]+pixel2[2])/2)]
             n.putpixel((row,col),(int(pixel[0]),int(pixel[1]),int(pixel[2])))
 
     return n

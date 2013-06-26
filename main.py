@@ -1,6 +1,6 @@
 from PIL import Image
 from pdi_trabalho import onlyR,onlyRmono,onlyG,onlyGmono,onlyB,onlyBmono,yuv2rgb,rgb2yuv,negativo,brilhoaditivo,brilhomultiplicativo,media,\
-                         mediana,negativobandaY,brilhoaditivobandaY,brilhomultiplicativobandaY,controlfilter
+                         mediana,negativobandaY,brilhoaditivobandaY,brilhomultiplicativobandaY,medianabandaY,controlfilter
 import os
 
 def main():
