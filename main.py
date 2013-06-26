@@ -69,9 +69,9 @@ def main():
             caminho = os.getcwd()+'/onlyGmono.jpg'
             img2.save(caminho)
         if(op == 7):
-            img2 = onlyRmono(img)
+            img2 = onlyBmono(img)
             img2.show()
-            caminho = os.getcwd()+'/onlyRmono.jpg'
+            caminho = os.getcwd()+'/onlyBmono.jpg'
             img2.save(caminho)
         if(op == 8):
             img2 = negativo(img)
